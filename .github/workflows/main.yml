@@ -8,7 +8,7 @@ on:
 env:
   reponame: simple-nginx
   codedeployname: zerodowntimedemo-git  
-  buckets3: bucket=zerodowntimerdemo,bundleType=tar,eTag=b07e3d34a448daec35c862635f003205,key=zerodowntimedemo.tar
+  buckets3: ${{ env.BUCKETS3 }}
   
 jobs:
   build:
