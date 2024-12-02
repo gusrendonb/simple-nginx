@@ -1,4 +1,4 @@
-name: Build and deploy test
+name: Build and deploy test ZeroDownTimeDemo
 
 on:
   push:
