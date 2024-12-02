@@ -1,0 +1,31 @@
+name: Build and deploy test
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  reponame: simple-nginx
+  codedeployname: zerodowntimedemo-git  
+  s3bucket: bucket=zerodowntimerdemo,bundleType=tar,eTag=b07e3d34a448daec35c862635f003205,key=zerodowntimedemo.tar
+  
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Run CodeDeploy deployment
+        run: |
+          aws deploy create-deployment --application-name ${{ env.codedeployname }} --deployment-group-name ${{ env.codedeployname }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location ${{ s3bucket }}
