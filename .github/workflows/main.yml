@@ -8,7 +8,7 @@ on:
 env:
   reponame: simple-nginx
   codedeployname: zerodowntimedemo-git  
-  s3bucket: bucket=zerodowntimerdemo,bundleType=tar,eTag=b07e3d34a448daec35c862635f003205,key=zerodowntimedemo.tar
+  buckets3: bucket=zerodowntimerdemo,bundleType=tar,eTag=b07e3d34a448daec35c862635f003205,key=zerodowntimedemo.tar
   
 jobs:
   build:
@@ -28,4 +28,4 @@ jobs:
 
       - name: Run CodeDeploy deployment
         run: |
-          aws deploy create-deployment --application-name ${{ env.codedeployname }} --deployment-group-name ${{ env.codedeployname }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location ${{ s3bucket }}
+          aws deploy create-deployment --application-name ${{ env.codedeployname }} --deployment-group-name ${{ env.codedeployname }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location ${{ buckets3 }}
