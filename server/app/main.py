@@ -27,7 +27,7 @@ templates = Jinja2Templates(
 def get_book(db: Session, book_id: int):
     book = db.query(Book).filter(Book.id == book_id).first()
     if book is None:
-        raise HTTPException(status_code=404, detail="Book not found")
+        raise HTTPException(status_code=404, detail="Book was not found")
     return book
 
 
