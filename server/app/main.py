@@ -75,7 +75,7 @@ def read_book(request: Request, book_id: int, db: Session = Depends(get_db)):
 def update_book_form(request: Request, book_id: int, db: Session = Depends(get_db)):
     book = get_book(db, book_id)
     return templates.TemplateResponse(
-        "actualiza_book.html", {"request": request, "book": book}
+        "update_book.html", {"request": request, "book": book}
     )
 
 
