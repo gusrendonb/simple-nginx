@@ -30,4 +30,4 @@ jobs:
 
       - name: Run CodeDeploy deployment
         run: |
-          aws deploy create-deployment --application-name ${{ env.codedeployname }} --deployment-group-name ${{ env.codedeployname }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location bucket=zerodowntimerdemo,bundleType=tar,eTag=55aa58e6de6c0c19b0de116b558ffcf5,key=zerodowntimedemo.tar --file-exists-behavior OVERWRITE
+          aws deploy create-deployment --application-name ${{ env.codedeployname }} --deployment-group-name ${{ env.codedeployname }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location bucket=zerodowntimerdemo,bundleType=tar,eTag=55aa58e6de6c0c19b0de116b558ffcf5,key=zerodowntime.tar --file-exists-behavior OVERWRITE
